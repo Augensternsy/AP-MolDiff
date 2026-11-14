@@ -1,0 +1,42 @@
+# Private research/test artifacts are excluded from the source release.
+private_history/
+test_artifacts*/
+tests/
+runs/
+logs/
+cache/
+.cache/
+data/
+datasets/
+checkpoints/
+*_PRIVATE_AUDIT/
+*.log
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+*.pem
+*.key
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.pkl
+*.pickle
+*.npy
+*.npz
+*.parquet
+*.pdb
+*.pdbqt
+*.sdf
+# Private tabular data and generated results are excluded.
+*.csv
+
+# Allow only the two reviewed Python source files under the otherwise private data namespace.
+!datasets/
+datasets/*
+!datasets/__init__.py
+!datasets/ki_preference_dataset.py
+
+.venv-model/

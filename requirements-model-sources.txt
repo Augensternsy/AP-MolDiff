@@ -1,0 +1,12 @@
+# CPU smoke-tested direct dependencies; select a compatible PyTorch CPU/CUDA wheel explicitly.
+-r requirements.txt
+torch==2.6.0+cpu
+transformers==4.50.3
+safetensors==0.5.3
+blobfile==3.3.0
+swanlab==0.10.5
+wandb==0.31.0
+tqdm==4.70.1
+vina==1.2.7
+meeko==0.7.1
+gemmi==0.7.5
