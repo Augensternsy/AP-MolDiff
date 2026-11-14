@@ -40,3 +40,18 @@ datasets/*
 !datasets/ki_preference_dataset.py
 
 .venv-model/
+
+# Explicit public resource documentation and manifests; binary/data payloads remain ignored.
+!checkpoint_manifest.csv
+!dataset_manifest.csv
+!evaluation_manifest.csv
+!checkpoints/
+checkpoints/*
+!checkpoints/README.md
+!data/
+data/*
+!data/README.md
+!data/SOURCES.md
+!evaluation/release_inputs/per_target.csv
+!evaluation/release_inputs/detailed.csv
+downloads/

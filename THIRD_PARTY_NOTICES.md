@@ -593,3 +593,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
+
+## Research resource distribution scope
+
+The project owner authorized publication of the selected model and project-constructed data artifacts in the research-resources-20261115 Release. That authorization is not evidence of a missing historical training lineage. The code MIT grant does not blanket-relicense weights, data, ESM or upstream database content. TDC BindingDB_Ki-derived content retains applicable CC BY 3.0 US attribution/terms; see data/SOURCES.md, https://tdcommons.ai/multi_pred_tasks/dti/ and https://creativecommons.org/licenses/by/3.0/us/ . The original full BindingDB and ESM copies are not rehosted. All five full third-party source license texts above remain unchanged.

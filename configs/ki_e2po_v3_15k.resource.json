@@ -1,0 +1,38 @@
+{
+  "record_type": "resource_description_not_historical_run_snapshot",
+  "source_code_commit": "40a195a4b7f42b090228e2fa0da1820868f21f73",
+  "model_class": "improved_diffusion.transformer_model2_self_cond.TransformerNetModel2",
+  "architecture": {
+    "in_channels": 32,
+    "model_channels": 128,
+    "hidden_size": 1024,
+    "num_attention_heads": 16,
+    "num_hidden_layers": 12,
+    "self_conditioning": true,
+    "active_token_ids": 37,
+    "checkpoint_embedding_rows": 312
+  },
+  "bert_config": "configs/bert-base-uncased/config.json",
+  "smiles_tokenizer": "improved-diffusion/scripts/mytokenizers.py",
+  "esm_model_id": "facebook/esm2_t30_150M_UR50D",
+  "esm_output_dimension": 640,
+  "condition_dimension": 1024,
+  "historical_external_projection": "UNVERIFIED_NOT_DISTRIBUTED",
+  "historical_paper_identity": "UNVERIFIED",
+  "diffusion_public_sampling": {
+    "noise_schedule": "sqrt",
+    "original_steps": 2000,
+    "timestep_spacing": 10,
+    "prediction": "START_X",
+    "variance": "FIXED_LARGE"
+  },
+  "warning": "These are current implementation/resource descriptions, not recovered immutable historical training configurations.",
+  "model": "ki_e2po_v3_15k",
+  "stage": "stage2_policy",
+  "checkpoint": "checkpoints/direct_ki_e2po_15k.pt",
+  "checkpoint_sha256": "2bd5e18825308b15a5f07ba31d3ead3ca3f7351e1984f9c6f5e9f2a6476582e8",
+  "checkpoint_bytes": 731576807,
+  "checkpoint_download": "https://github.com/Augensternsy/AP-MolDiff/releases/download/research-resources-20261115/direct_ki_e2po_15k.pt",
+  "shared_parameter_loading": "assign=False; later lm_head copy wins for PathB; v3 saved tied keys agree",
+  "clamp_none_behavior": "no callback"
+}
