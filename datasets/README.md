@@ -11,7 +11,6 @@ datasets/
 ├── stage1/                       # Indexed CSVs and categorical mapping
 ├── e2po/                         # Clean ligands, training pairs, held-out references
 ├── targets/                      # Structural FASTA constructs and active references
-├── feature_index/                # Historical index ONLY, not embeddings
 ├── README.md
 └── SOURCES.md
 results/
@@ -24,7 +23,7 @@ results/
 - Stage one: `stage1/train.csv` has **1,153,824 rows** with integer SMILES/sequence IDs. Decode them with `stage1/categorical_mappings.json` (785,740 SMILES and 6,098 sequences). `valid.csv` and `test.csv` have **115 rows each**; their historical split construction and paper adoption remain unverified. Their filenames do not certify leakage-free splits. The TG and Self-Conditioning entry defaults resolve the relocated training CSV when run from `improved-diffusion/scripts/`.
 - Stage two: the current deposited **328,157-pair** `e2po/le_affinity_preserving_preference_pairs_delta1.0.csv` is now the default input of both `KiPreferenceDataset` and `scripts/train_direct_ki_e2po.py`. This replaces a missing legacy `data/bindingdb_ki/preference_pairs_delta1.0_no_test_targets.csv` path. It is an explicit current-data default, **not proof that the historical model used this exact file**. The 55,095-row clean-ligand pool is an intermediate/reference, not a winner/loser pair table. The 4,490 held-out pairs are not the default training input. The 87-row SMILES-only reference has no per-row target labels.
 - Targets: `targets/test_target_sequences.csv` has 12 named sequences for preference exclusion. The 12 FASTA files contain one structural construct apiece. Do not equate a sequence-table entry with a FASTA construct merely because the target name matches; lengths/truncations and constructs may differ. Active-reference CSVs are per-target SMILES tables used by novelty/candidate-selection code.
-- Features: `feature_index/ap_moldiff_feature_index.csv` contains **1,153,824 historical index rows**, not the roughly 1 TB tensor cache. Historical row paths remain `datasets/output/train_desc_states/<bucket>/<row>.pt`; this cache path was deliberately kept unchanged in the loaders. The released categorical mapping is now found under `datasets/stage1/`. Missing-cache fallback to zero tensors is not valid historical conditioning. The 16,842 previously recorded missing feature paths and the unverified historical 640→1024 projection are not fixed by moving files. Per-cache hashes in the index are historical metadata; only the index file itself was freshly hashed here.
+- Protein conditioning: actual feature tensors and recovered historical 640→1024 projection parameters are not included. Loaders still expect `datasets/output/train_desc_states/<bucket>/<row>.pt`; missing-cache fallback to zero tensors is not valid historical conditioning. The categorical mapping is in `datasets/stage1/`.
 - Results: 24 generation CSVs contain 1,000 attempted SMILES each, retaining `INVALID`. The 24 Vina tables contain selected-molecule docking rows, not all generation attempts. Blank scores remain missing. Two 12,000-row property tables retain their existing provenance/error columns. Historical summary and statistical tables are preserved, not recomputed or newly certified.
 
 ## Entry points and explicit inputs
@@ -48,7 +47,7 @@ Do not execute cache generation, preference preparation, model sampling, docking
 
 ## Complete per-file catalog
 
-Counts exclude CSV headers and include invalid/missing-value records. No compressed archives or duplicate file-content SHA256 groups were found in the scanned `datasets/` tree. All 89 original files were inspected: 73 CSVs, 12 FASTAs, two JSON objects and two Python sources. The 87 data/metadata files are byte-preserved; the preference-loader source has only its data-path literal updated. `SOURCES.md` was moved here without changing its text.
+Counts exclude CSV headers and include invalid/missing-value records. No compressed archives or duplicate file-content SHA256 groups were found in the scanned `datasets/` tree. The 88 retained original files were inspected: 72 CSVs, 12 FASTAs, two JSON objects and two Python sources. The 86 retained data/metadata files are byte-preserved; the preference-loader source has only its data-path literal updated. `SOURCES.md` was moved here without changing its text.
 
 | File (repository-relative) | Rows / records | Schema | Actual purpose | Code use |
 |---|---:|---|---|---|
@@ -115,7 +114,6 @@ Counts exclude CSV headers and include invalid/missing-value records. No compres
 | [datasets/stage1/test.csv](stage1/test.csv) | 115 | CSV-10 | Deposited validation/test-shaped indexed table; historical split and paper adoption unverified; not used by default training | TrainCSVDataset with explicit --csv_path; no default consumer |
 | [datasets/stage1/train.csv](stage1/train.csv) | 1153824 | CSV-10 | Indexed protein–molecule training rows; row order defines feature-cache row IDs | train_protein_170.py; train_protein_self_cond.py; train_direct_ki_e2po.py cache lookup |
 | [datasets/stage1/valid.csv](stage1/valid.csv) | 115 | CSV-10 | Deposited validation/test-shaped indexed table; historical split and paper adoption unverified; not used by default training | TrainCSVDataset with explicit --csv_path; no default consumer |
-| [datasets/feature_index/ap_moldiff_feature_index.csv](feature_index/ap_moldiff_feature_index.csv) | 1153824 | CSV-11 | Historical per-row feature paths, sizes, hashes and status only; NO tensor payloads | traceability index; model code loads actual cache .pt files instead |
 | [datasets/targets/test_target_sequences.csv](targets/test_target_sequences.csv) | 12 | CSV-12 | Twelve named target sequences used by preference exclusion; not assumed identical to structural FASTA constructs | prepare_bindingdb_ki_preferences_v3.py --test_target_seq_file |
 | [datasets/targets/fasta/CCR9.fasta](targets/fasta/CCR9.fasta) | 1 | FASTA | One deposited structural protein construct sequence; header and exact length below; not necessarily full-length protein | sample_protein_self_cond.py; eval_ki_e2po_12_targets.py; extract_esm.py; preference preparation |
 | [datasets/targets/fasta/ESR1.fasta](targets/fasta/ESR1.fasta) | 1 | FASTA | One deposited structural protein construct sequence; header and exact length below; not necessarily full-length protein | sample_protein_self_cond.py; eval_ki_e2po_12_targets.py; extract_esm.py; preference preparation |
@@ -154,7 +152,6 @@ Counts exclude CSV headers and include invalid/missing-value records. No compres
 - **CSV-08**: `protein_id`, `protein_sequence`, `winner_smiles`, `loser_smiles`, `winner_pKi`, `loser_pKi`, `delta_pKi`, `winner_QED`, `loser_QED`, `winner_SA`, `loser_SA`, `winner_MolWt`, `loser_MolWt`, `winner_LogP`, `loser_LogP`, `winner_Ro5`, `loser_Ro5`, `winner_HAC`, `loser_HAC`, `winner_Exp_LE`, `loser_Exp_LE`, `delta_Exp_LE`, `winner_pKi_per_HAC`, `loser_pKi_per_HAC`, `pair_priority`.
 - **CSV-09**: `target`, `protein_id`, `protein_sequence`, `winner_smiles`, `loser_smiles`, `winner_pKi`, `loser_pKi`, `delta_pKi`, `winner_Exp_LE`, `loser_Exp_LE`, `delta_Exp_LE`, `pair_priority`.
 - **CSV-10**: `smiles`, `sequence`, `organism`, `pfam_str`, `cluster`, `is_augment`, `label`, `cluster_smi`.
-- **CSV-11**: `relative_path`, `bytes`, `historical_sha256`, `evidence_status`.
 - **CSV-12**: `target_name`, `protein_sequence`.
 
 ## JSON structure
@@ -185,4 +182,4 @@ Historical Diversity definitions differ between evaluators; do not merge columns
 
 ## Checks completed for this organization
 
-All 87 original data/metadata files passed current before/after SHA256 comparison. All CSV rows matched their declared column counts; existing empty fields were retained. All stage-one SMILES/sequence IDs resolved in the categorical mapping. The actual stage-one reader decoded a one-row subset; the actual preference reader tokenized a one-pair subset. Runtime file discovery found the 24 migrated generation tables and all 12 active-reference tables. All tracked Python files passed AST parsing and all 11 existing entry points returned exit code 0 for `--help` in the existing isolated test environment. The private path/data validation run recorded 308 checks. These checks do not run training, ESM encoding, generation, molecular scoring, statistics or Vina, and do not establish paper reproduction.
+All 86 retained data/metadata files passed current before/after SHA256 comparison. All CSV rows matched their declared column counts; existing empty fields were retained. All stage-one SMILES/sequence IDs resolved in the categorical mapping. The actual stage-one reader decoded a one-row subset; the actual preference reader tokenized a one-pair subset. Runtime file discovery found the 24 migrated generation tables and all 12 active-reference tables. All tracked Python files passed AST parsing and all 11 existing entry points returned exit code 0 for `--help` in the existing isolated test environment. The private path/data validation run recorded 308 checks. These checks do not run training, ESM encoding, generation, molecular scoring, statistics or Vina, and do not establish paper reproduction.
