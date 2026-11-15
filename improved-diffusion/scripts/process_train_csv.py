@@ -168,7 +168,7 @@ class TrainCSVDataset:
         self.mask_desc = mask_desc
         self.max_desc_length = max_desc_length # 需要知道最大长度以便补全 padding
 
-        self.mapping_path = os.path.join(dir, 'categorical_mappings.json')
+        self.mapping_path = os.path.join(dir, 'stage1', 'categorical_mappings.json')
         self.sequence_mapping, self.smiles_mapping = load_sequence_and_smiles_mapping(self.mapping_path)
         self.ori_data = self.get_ori_data()
         self.load_state = load_state
@@ -246,7 +246,7 @@ class TrainCSVDataset:
 
 def main():
     parser = argparse.ArgumentParser(description='Process train.csv for 2D protein embedding generation')
-    parser.add_argument('--csv_path', type=str, default='../../datasets/train.csv')
+    parser.add_argument('--csv_path', type=str, default='../../datasets/stage1/train.csv')
     parser.add_argument('--output_dir', type=str, default='../../datasets/output/train_desc_states',
                         help='Directory to save sharded .pt files')
     parser.add_argument('--esm2_path', type=str, default='../../esm2_t30_150M_UR50D')

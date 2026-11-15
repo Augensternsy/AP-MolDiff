@@ -340,10 +340,10 @@ def main():
     parser.add_argument('--out_dir', type=str, default='data/bindingdb_ki', help="Output directory")
     parser.add_argument('--min_ligands_per_protein', type=int, default=20, help="Min ligands per protein sequence")
     parser.add_argument('--delta_pki', type=float, default=1.0, help="Delta pKi threshold for preference pairs")
-    parser.add_argument('--test_target_seq_file', type=str, default='data/test_targets/test_target_sequences.csv', help="CSV containing test target sequences")
+    parser.add_argument('--test_target_seq_file', type=str, default='datasets/targets/test_target_sequences.csv', help="CSV containing test target sequences")
     parser.add_argument('--exclude_test_target_ligands', type=str, default='true', help="Exclude exact test target rows")
     parser.add_argument('--exclude_exact_test_ligand_smiles', type=str, default='true', help="Cross-exclude test active smiles")
-    parser.add_argument('--fasta_dir', type=str, default='datasets/fasta', help="Benchmark protein fasta directory")
+    parser.add_argument('--fasta_dir', type=str, default='datasets/targets/fasta', help="Benchmark protein fasta directory")
     parser.add_argument('--num_cores', type=int, default=max(1, cpu_count() - 2), help="Number of CPU cores for parallelism")
     
     # Tokenizer params
@@ -361,7 +361,7 @@ def main():
     out_dir_abs = os.path.isabs(args.out_dir) and args.out_dir or os.path.abspath(os.path.join(project_root, args.out_dir))
     os.makedirs(out_dir_abs, exist_ok=True)
     
-    fasta_dir_abs = os.path.isabs(args.fasta_dir) and args.fasta_dir or os.path.abspath(os.path.join(project_root, 'datasets/fasta'))
+    fasta_dir_abs = os.path.isabs(args.fasta_dir) and args.fasta_dir or os.path.abspath(os.path.join(project_root, 'datasets/targets/fasta'))
     test_seq_file_abs = os.path.isabs(args.test_target_seq_file) and args.test_target_seq_file or os.path.abspath(os.path.join(project_root, args.test_target_seq_file))
     
     tokenizer_path_abs = args.tokenizer_path

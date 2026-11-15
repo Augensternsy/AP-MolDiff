@@ -31,7 +31,7 @@ class KiPreferenceDataset(Dataset):
     ):
         super().__init__()
         if csv_path is None:
-            csv_path = os.path.join(PROJECT_ROOT, 'data', 'bindingdb_ki', 'preference_pairs_delta1.0_no_test_targets.csv')
+            csv_path = os.path.join(PROJECT_ROOT, 'datasets', 'e2po', 'le_affinity_preserving_preference_pairs_delta1.0.csv')
         
         self.csv_path = csv_path
         self.max_len = max_len

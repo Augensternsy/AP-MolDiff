@@ -223,7 +223,7 @@ def calculate_molecular_properties(smiles_list, target_name):
         diversity = 1.0
 
     # Novelty vs actives
-    ref_csv = os.path.join(PROJECT_ROOT, "datasets", "actives_bindingdb_cl", f"{target_name}.csv")
+    ref_csv = os.path.join(PROJECT_ROOT, "datasets", "targets", "actives_bindingdb_cl", f"{target_name}.csv")
     novelty = 1.0
     if os.path.exists(ref_csv):
         try:
@@ -467,7 +467,7 @@ def main():
     generated_candidates = {}
 
     for target in GENE_TO_PDB.keys():
-        fasta_path = os.path.join(PROJECT_ROOT, "datasets", "fasta", f"{target}.fasta")
+        fasta_path = os.path.join(PROJECT_ROOT, "datasets", "targets", "fasta", f"{target}.fasta")
         if not os.path.exists(fasta_path):
             logger.error(f"Fasta not found: {fasta_path}")
             continue

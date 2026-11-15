@@ -65,8 +65,8 @@ def get_morgan_fp(mol):
 def find_reference_file(project_root, target):
     target_lower = target.lower()
     
-    # 优先搜索 datasets/actives_bindingdb_cl/
-    cl_dir = os.path.join(project_root, "datasets/actives_bindingdb_cl")
+    # 优先搜索 datasets/targets/actives_bindingdb_cl/
+    cl_dir = os.path.join(project_root, "datasets/targets/actives_bindingdb_cl")
     if os.path.exists(cl_dir):
         for f in os.listdir(cl_dir):
             if target_lower in f.lower() and f.endswith(('.csv', '.txt', '.smi')):

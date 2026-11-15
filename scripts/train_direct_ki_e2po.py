@@ -114,7 +114,7 @@ def compute_length_norm_diff_loss(model, diffusion, x_ids, mask, desc_state, des
 
 def main():
     parser = argparse.ArgumentParser(description="Direct Ki-E2PO Preference Optimization Training")
-    parser.add_argument('--csv_path', type=str, default=os.path.join(PROJECT_ROOT, 'data', 'bindingdb_ki', 'preference_pairs_delta1.0_no_test_targets.csv'))
+    parser.add_argument('--csv_path', type=str, default=os.path.join(PROJECT_ROOT, 'datasets', 'e2po', 'le_affinity_preserving_preference_pairs_delta1.0.csv'))
     parser.add_argument('--model_path', type=str, default=os.path.join(PROJECT_ROOT, 'checkpoints_protein_170_self_cond_from_finetuned', 'PLAIN_ema_0.9999_050000.pt'))
     parser.add_argument('--reference_model_path', type=str, default="", help="Path to reference model checkpoint. If not provided, defaults to model_path.")
     parser.add_argument('--esm2_path', type=str, default=os.path.join(PROJECT_ROOT, 'esm2_t30_150M_UR50D'))
@@ -261,8 +261,8 @@ def main():
     # Pre-build sequence to cache mapping for reusing first-stage precomputed protein embeddings
     seq_to_cache_path = {}
     try:
-        mapping_file = os.path.join(PROJECT_ROOT, 'datasets', 'categorical_mappings.json')
-        train_csv_file = os.path.join(PROJECT_ROOT, 'datasets', 'train.csv')
+        mapping_file = os.path.join(PROJECT_ROOT, 'datasets', 'stage1', 'categorical_mappings.json')
+        train_csv_file = os.path.join(PROJECT_ROOT, 'datasets', 'stage1', 'train.csv')
         if os.path.exists(mapping_file) and os.path.exists(train_csv_file):
             logger.info("Building sequence to precomputed cache mapping...")
             with open(mapping_file, 'r', encoding='utf-8') as f:

@@ -14,7 +14,7 @@ def parse_fasta(fpath):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--fasta_dir", type=str, default="../../datasets/fasta")
+    parser.add_argument("--fasta_dir", type=str, default="../../datasets/targets/fasta")
     parser.add_argument("--esm2_path", type=str, default="../../esm2_t30_150M_UR50D")
     parser.add_argument("--output_file", type=str, default="../../generation_results/esm_raw_embeddings.pt")
     args = parser.parse_args()

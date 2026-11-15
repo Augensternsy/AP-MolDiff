@@ -305,7 +305,7 @@ def create_argparser():
         timestep_spacing=10,
         model_path=str(resource_root / "checkpoints_protein_170_self_cond/PLAIN_ema_0.9999_200000.pt"),  # 指向自条件化 checkpoint
         esm2_path=str(resource_root / "esm2_t30_150M_UR50D"),
-        fasta_dir=str(resource_root / "datasets/fasta"),
+        fasta_dir=str(resource_root / "datasets/targets/fasta"),
         projection_weights_path="",
         target_protein="all",
         output_dir=str(resource_root / "runs" / ("generation-" + uuid.uuid4().hex)),

@@ -256,7 +256,7 @@ def create_argparser():
         model_num_attention_heads=16,
         model_num_hidden_layers=12,
         corrupt_prob=0.4,
-        csv_path='../../datasets/train.csv',
+        csv_path='../../datasets/stage1/train.csv',
     )
     defaults.update(model_and_diffusion_defaults())
     defaults.update(text_defaults)

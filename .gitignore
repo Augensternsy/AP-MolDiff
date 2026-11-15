@@ -38,6 +38,8 @@ __pycache__/
 datasets/*
 !datasets/__init__.py
 !datasets/ki_preference_dataset.py
+!datasets/README.md
+!datasets/SOURCES.md
 
 .venv-model/
 
@@ -51,7 +53,6 @@ checkpoints/*
 !data/
 data/*
 !data/README.md
-!data/SOURCES.md
 !evaluation/release_inputs/per_target.csv
 !evaluation/release_inputs/detailed.csv
 downloads/
