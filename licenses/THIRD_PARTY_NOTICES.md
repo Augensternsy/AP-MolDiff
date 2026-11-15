@@ -1,6 +1,6 @@
 # Source and dependency notices
 
-MIT LICENSE in this repository: Copyright (c) 2026 Wsy. Its scope is the two
+The MIT grant in `MIT.txt`: Copyright (c) 2026 Wsy. Its scope is the two
 standalone tools, twelve author-confirmed research entry/data/evaluation source
 files listed below, the explicitly authorized local collate contribution,
 and new original compatibility adapter/test/documentation contributions.
@@ -72,16 +72,14 @@ RDKit SA_Score BSD-3-Clause notice is reproduced in full below.
 No checkpoints, ESM weight copies, BindingDB/private data, internal reports or
 server symlinks are included. Research/model/data access permissions remain separate.
 
-## License text location and legacy source references
+## License text location
 
-The five complete license texts formerly stored in the root
-`THIRD_PARTY_LICENSES` directory have been consolidated into this file.
-Existing source-header comments that say "see THIRD_PARTY_LICENSES" refer to
-these same license texts, now reproduced below. Those comments were preserved
-without editing Python source; no runtime resource loader uses that directory.
+This file retains all five third-party license texts and their attribution
+notices. The separate `MIT.txt` preserves Wsy's existing MIT grant unchanged;
+it does not replace or relicense these third-party terms. Source-header license
+references point to this file. Retain these notices, the complete applicable
+license texts and the original source copyright statements when redistributing.
 The original filenames below identify provenance, not existing file paths.
-Keep this file and the upstream copyright notices with redistributed source.
-The root `LICENSE` is unchanged and does not replace these third-party terms.
 
 ## Complete third-party license texts
 

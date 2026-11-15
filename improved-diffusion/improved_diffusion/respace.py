@@ -1,5 +1,5 @@
 # Licensed base: Diffusion-LM 759889d58ef38e2eed41a8c34db8032e072826f4 (Apache-2.0).
-# OpenAI-derived portions retain their upstream MIT notices; see THIRD_PARTY_LICENSES.
+# OpenAI-derived portions retain their upstream MIT notices; see ../../licenses/THIRD_PARTY_NOTICES.md.
 # AP-MolDiff adapters: newly expressed from the frozen interface/behavior contract.
 # Wsy-authorized local contributions remain subject to their MIT authorization.
 # No assertion of full historical-model or paper reproduction is made.
