@@ -29,7 +29,7 @@
   "warning": "These are current implementation/resource descriptions, not recovered immutable historical training configurations.",
   "model": "ki_e2po_v3_15k",
   "stage": "stage2_policy",
-  "checkpoint": "checkpoints/direct_ki_e2po_15k.pt",
+  "checkpoint": "checkpoints/DLPS-E2PO.pt",
   "checkpoint_sha256": "2bd5e18825308b15a5f07ba31d3ead3ca3f7351e1984f9c6f5e9f2a6476582e8",
   "checkpoint_bytes": 731576807,
   "checkpoint_download": "https://github.com/Augensternsy/AP-MolDiff/releases/download/research-resources-20261115/direct_ki_e2po_15k.pt",
