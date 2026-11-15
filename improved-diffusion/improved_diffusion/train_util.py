@@ -1,4 +1,4 @@
-# Diffusion-LM Apache-2.0 training foundation; upstream notices retained in ../../licenses/THIRD_PARTY_NOTICES.md.
+# Diffusion-LM Apache-2.0 training foundation; upstream notices retained in ../THIRD_PARTY_NOTICES.md.
 import copy
 import functools
 import os
