@@ -50,9 +50,6 @@ datasets/*
 !checkpoints/
 checkpoints/*
 !checkpoints/README.md
-!data/
-data/*
-!data/README.md
 !evaluation/release_inputs/per_target.csv
 !evaluation/release_inputs/detailed.csv
 downloads/
