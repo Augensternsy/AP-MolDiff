@@ -1,0 +1,27 @@
+{
+  "target": "SPIN1",
+  "source_pt": "PAFlow/generated_1000/SPIN1/result.pt",
+  "source_pt_sha256": "ef39467c87260569fdb8b937bba4d95dc30d1158252046045454d88cb367fc3b",
+  "source_pickle_member": "result/data.pkl",
+  "source_pickle_sha256": "46ff6103e3cd575794386b5014ff89957668ea0a8a3fde755cf29257f7bc4390",
+  "safe_static_parser_sha256": "2d124df05a7b176158dd38de6da39d31eac808e7880f8115b70232d842e5cd03",
+  "numeric_prediction_count": 1000,
+  "position_trajectory_count": 1000,
+  "type_trajectory_count": 1000,
+  "total_atom_rows": 42609,
+  "position_dtype": "<f8",
+  "encoded_type_dtype": "<i8",
+  "position_nonfinite_scalar_count": 0,
+  "sdf_count": 226,
+  "no_saved_sdf_count": 774,
+  "npz_sha256": "d4a8c0c29e3515f20ec69c22deefddb92749d90959700d2811600cf503d9ae11",
+  "index_sha256": "ebddba6b68b49533cc83e0ace72013c27977bdfb747e33dd03ac2907084936c1",
+  "all_per_sample_payloads_verified_bitwise": true,
+  "notes": [
+    "Static pickle opcode interpreter only: referenced GLOBAL/REDUCE/NEWOBJ/BUILD operations never execute; only literal latin-1 string-to-bytes conversion is allowlisted.",
+    "No torch/pickle load, foreign-class instantiation, GPU access, chemical reconstruction, sampling or experiment execution.",
+    "Type values are original encoded indices, not relabeled atomic numbers. Native coordinates are not rescaled.",
+    "Full trajectories stay in the unchanged result.pt; NPZ contains original final predicted positions and types only.",
+    "Missing SDF does not mean missing raw prediction and is not a newly fabricated failed molecule."
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target": "GRIK1",
+  "source_pt": "PAFlow/generated_1000/GRIK1/result.pt",
+  "source_pt_sha256": "cce39d724c59063f57573c37a7549b5a68a96c6ad6e04e1b8c7864016a00fc08",
+  "source_pickle_member": "result/data.pkl",
+  "source_pickle_sha256": "0fc12c517f748a9b929350154ad1a7480b0236c29e69d4c2c3a4aaf792069f96",
+  "safe_static_parser_sha256": "2d124df05a7b176158dd38de6da39d31eac808e7880f8115b70232d842e5cd03",
+  "numeric_prediction_count": 1000,
+  "position_trajectory_count": 1000,
+  "type_trajectory_count": 1000,
+  "total_atom_rows": 32002,
+  "position_dtype": "<f8",
+  "encoded_type_dtype": "<i8",
+  "position_nonfinite_scalar_count": 0,
+  "sdf_count": 732,
+  "no_saved_sdf_count": 268,
+  "npz_sha256": "d1a31f0cbd1c6edb2e685026943bd037a27d4f544ac84932a643a347d4c8866e",
+  "index_sha256": "093edcae8cdd7cf45f557823f38ccb675e04cef923ad005c9865b8f8e2a7b731",
+  "all_per_sample_payloads_verified_bitwise": true,
+  "notes": [
+    "Static pickle opcode interpreter only: referenced GLOBAL/REDUCE/NEWOBJ/BUILD operations never execute; only literal latin-1 string-to-bytes conversion is allowlisted.",
+    "No torch/pickle load, foreign-class instantiation, GPU access, chemical reconstruction, sampling or experiment execution.",
+    "Type values are original encoded indices, not relabeled atomic numbers. Native coordinates are not rescaled.",
+    "Full trajectories stay in the unchanged result.pt; NPZ contains original final predicted positions and types only.",
+    "Missing SDF does not mean missing raw prediction and is not a newly fabricated failed molecule."
+  ]
+}

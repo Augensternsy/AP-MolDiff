@@ -1,0 +1,27 @@
+{
+  "target": "KDM1A",
+  "source_pt": "PAFlow/generated_1000/KDM1A/result.pt",
+  "source_pt_sha256": "58c5748c603900a93de8b66a7f6a835af829da712ef7ebf7aa5c1c4af66f81ef",
+  "source_pickle_member": "result/data.pkl",
+  "source_pickle_sha256": "0ece9e8e58beb0bc1ea3b91aaf965611609a8a8138811b224b533f76f2edff9e",
+  "safe_static_parser_sha256": "2d124df05a7b176158dd38de6da39d31eac808e7880f8115b70232d842e5cd03",
+  "numeric_prediction_count": 1000,
+  "position_trajectory_count": 1000,
+  "type_trajectory_count": 1000,
+  "total_atom_rows": 49995,
+  "position_dtype": "<f8",
+  "encoded_type_dtype": "<i8",
+  "position_nonfinite_scalar_count": 0,
+  "sdf_count": 861,
+  "no_saved_sdf_count": 139,
+  "npz_sha256": "798f5ee2259c55cd192d376d60a77478937645a111d1bde8df7a13f5015c6292",
+  "index_sha256": "16eaaecc5a473159cf13f27d6755852d0dd8a06a809d50be8bcf3b4e406b4be2",
+  "all_per_sample_payloads_verified_bitwise": true,
+  "notes": [
+    "Static pickle opcode interpreter only: referenced GLOBAL/REDUCE/NEWOBJ/BUILD operations never execute; only literal latin-1 string-to-bytes conversion is allowlisted.",
+    "No torch/pickle load, foreign-class instantiation, GPU access, chemical reconstruction, sampling or experiment execution.",
+    "Type values are original encoded indices, not relabeled atomic numbers. Native coordinates are not rescaled.",
+    "Full trajectories stay in the unchanged result.pt; NPZ contains original final predicted positions and types only.",
+    "Missing SDF does not mean missing raw prediction and is not a newly fabricated failed molecule."
+  ]
+}
